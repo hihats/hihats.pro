@@ -1,0 +1,47 @@
+<h4>About me</h4>
+<p>
+  Web developer engineer,
+  <a href='http://bcert.me/suwwohnpm'>Certificated ScrumMaster®</a>,
+  general IT architect
+</p>
+<p><a href="/aboutme">for more information</a></p>
+
+<h4>Social account</h4>
+<table>
+<% @social_accounts.each do |item| %>
+    <tr data-url="<%= item['service'] %>">
+        <td><%= item['service'] %></td>
+        <td>
+          <a href="<%= item['url'] %>">
+            <span class="fa-<%= item['service'].gsub(" ", "") %> fa-social">
+
+            </span>
+            <%= item['account'] %>
+          </a>
+        </td>
+        <td><%= item['description'] %></td>
+    </tr>
+<% end %>
+</table>
+<h4>Works</h4>
+<table>
+<% @works.each do |item| %>
+    <tr data-url="<%= item['url'] %>">
+        <td>
+          <a href="<%= item['url'] %>"><%= item['name'] %></a>
+        </td>
+        <td><%= item['description'] %></td>
+    </tr>
+<% end %>
+</table>
+<h4>Projects</h4>
+<table>
+<% @projects.each do |item| %>
+    <tr data-url="<%= item['url'] %>">
+        <td>
+          <a href="<%= item['url'] %>"><%= item['name'] %></a>
+        </td>
+        <td><%= item['description'] %></td>
+    </tr>
+<% end %>
+</table>

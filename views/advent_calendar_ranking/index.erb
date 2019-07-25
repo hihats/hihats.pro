@@ -1,0 +1,41 @@
+<h4>Qiita Ranking</h4>
+<hr>
+<h5 class="u-pull-left">Hourly updates</h5>
+<h5 class="u-pull-right">
+  Last updated at : <%= @last_updated_at.localtime.strftime("%Y/%m/%d %H:%M") %>
+  <span class="fa-clock">
+
+  </span>
+</h5>
+<table>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Stock Count</th>
+      <th>Likes Count</th>
+      <th>Rank Comparison</th>
+      <th>Likes Rank</th>
+    </tr>
+<% rank = 1 %>
+<% @calendars.each do |calendar| %>
+    <tr data-url="<%= calendar['url'] %>">
+        <td><%= rank %></td>
+        <td>
+          <a href="<%= "https://qiita.com" + calendar['url'] %>"><%= calendar['name'] %></a>
+        </td>
+        <td><%= calendar['category'] %></td>
+        <td><%= calendar['stock_count'] %></td>
+        <td><%= calendar['likes_count'] %></td>
+        <td>
+          <% updown = "stay" if rank == calendar['likes_rank'] %>
+          <% updown = "up" if rank < calendar['likes_rank'] %>
+          <% updown = "down" if rank > calendar['likes_rank'] %>
+          <span class="fa-arrow-circle-<%= updown %> fa-<%= updown %>">
+          </span>
+        </td>
+        <td><%= calendar['likes_rank'] %></td>
+    </tr>
+  <% rank += 1 %>
+<% end %>
+</table>

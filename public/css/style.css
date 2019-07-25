@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?zc5m9v');
+  src:  url('../fonts/icomoon.eot?zc5m9v#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?zc5m9v') format('truetype'),
+    url('../fonts/icomoon.woff?zc5m9v') format('woff'),
+    url('../fonts/icomoon.svg?zc5m9v#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="fa-"], [class*=" fa-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-document-file-java:before {
+  content: "\e900";
+}
+.fa-document-file-php:before {
+  content: "\e901";
+}
+.fa-brand:before {
+  content: "\e902";
+  color: #cc342d;
+}
+.fa-ruby:before {
+  content: "\e902";
+  color: #cc342d;
+}
+.fa-Hatena:before {
+  content: "\e903";
+  color: #00a4de;
+}
+.fa-brand2:before {
+  content: "\e904";
+  color: #396;
+}
+.fa-speakerdeck:before {
+  content: "\e904";
+  color: #396;
+}
+.fa-arrow-circle-down:before {
+  content: "\f0ab";
+}
+.fa-arrow-circle-left:before {
+  content: "\f0a8";
+}
+.fa-arrow-circle-stay:before {
+  content: "\f0a9";
+}
+.fa-arrow-circle-up:before {
+  content: "\f0aa";
+}
+.fa-clock:before {
+  content: "\f017";
+}
+.fa-Qiita:before {
+  content: "\f002";
+  color: #4cb10d;
+}
+.fa-square:before {
+  content: "\f0c8";
+}
+.fa-twitter:before {
+  content: "\ea96";
+}
+.fa-github:before {
+  content: "\eab0";
+}
+.fa-down:before {
+  color: #AA3939;
+}
+.fa-up:before {
+  color: #2D882D;
+}
+.fa-stay:before {
+  color: #FFDA00;
+}
+
+.fa-social {
+  padding: 5px;
+  font-size: 125%;
+  vertical-align: middle;
+}
+
+footer p {
+  text-align: center;
+}
+footer a {
+  color: #fff;
+  text-indent: none;
+}
+footer {
+  font-size: 80%;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 500%;
+  padding-right: 500px;
+  margin-top: 200px;
+  margin-left: -500%;
+  margin-right: -500%;
+  background-color: #313131;
+}
