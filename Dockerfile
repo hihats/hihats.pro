@@ -1,4 +1,4 @@
-FROM ruby:2.4.0-alpine
+FROM ruby:2.6.3-alpine3.9
 ENV LANG ja_JP.UTF-8
 
 RUN apk update && apk upgrade && apk --update add tzdata && \
@@ -7,7 +7,7 @@ RUN apk update && apk upgrade && apk --update add tzdata && \
 ENV TZ Asia/Tokyo
 ENV APP_HOME /opt/app
 
-RUN gem install bundler && mkdir -p $APP_HOME
+RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 COPY Gemfile* $APP_HOME/
 
