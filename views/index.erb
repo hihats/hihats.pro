@@ -23,9 +23,9 @@
     </tr>
 <% end %>
 </table>
-<h4>Works</h4>
+<h4>Projects</h4>
 <table>
-<% @works.each do |item| %>
+<% @projects.each do |item| %>
     <tr data-url="<%= item['url'] %>">
         <td>
           <a href="<%= item['url'] %>"><%= item['name'] %></a>
@@ -34,9 +34,9 @@
     </tr>
 <% end %>
 </table>
-<h4>Projects</h4>
+<h4>Works</h4>
 <table>
-<% @projects.each do |item| %>
+<% @works.each do |item| %>
     <tr data-url="<%= item['url'] %>">
         <td>
           <a href="<%= item['url'] %>"><%= item['name'] %></a>
