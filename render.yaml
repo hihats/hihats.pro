@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: hihats-pro
+    runtime: docker
+    repo: https://github.com/hihats/hihats.pro
+    branch: master
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: yes
+    envVars:
+      - key: AWS_REGION
+        sync: false
+      - key: AWS_ACCESS_KEY
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: S3_BUCKET_NAME
+        sync: false
