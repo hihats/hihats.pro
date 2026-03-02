@@ -1,19 +1,22 @@
-FROM ruby:2.6.3-alpine3.9
-ENV LANG ja_JP.UTF-8
+FROM ruby:3.3-alpine
 
-RUN apk update && apk upgrade && apk --update add tzdata && \
-    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
-    rm -rf /var/cache/apk/*
-ENV TZ Asia/Tokyo
-ENV APP_HOME /opt/app
+ENV LANG=ja_JP.UTF-8
+ENV TZ=Asia/Tokyo
 
-RUN mkdir -p $APP_HOME
+RUN apk update && apk upgrade && \
+    apk --no-cache add tzdata build-base && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+ENV APP_HOME=/opt/app
 WORKDIR $APP_HOME
+
 COPY Gemfile* $APP_HOME/
+RUN bundle install && bundle clean --force && \
+    apk del build-base && \
+    rm -rf /var/cache/apk/*
 
-ENV BUNDLE_DISABLE_SHARED_GEMS 1
-RUN bundle install && bundle clean
+COPY . $APP_HOME
 
-ADD . $APP_HOME
-EXPOSE 80
-CMD bundle exec ruby main.rb -o $HOSTNAME -p $PORT
+EXPOSE 10000
+
+CMD ["bundle", "exec", "ruby", "main.rb"]
