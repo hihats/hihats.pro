@@ -2,12 +2,12 @@ services:
   - type: web
     name: hihats-pro
     plan: free
-    runtime: docker
-    repo: https://github.com/hihats/hihats.pro
-    branch: master
-    dockerfilePath: ./Dockerfile
+    image:
+      url: ghcr.io/hihats/hihats.pro:latest
+      creds:
+        fromRegistryCreds:
+          name: ghcr-hihats
     healthCheckPath: /
-    autoDeploy: yes
     envVars:
       - key: AWS_REGION
         sync: false
