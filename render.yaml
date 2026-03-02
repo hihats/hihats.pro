@@ -1,6 +1,7 @@
 services:
   - type: web
     name: hihats-pro
+    plan: free
     runtime: docker
     repo: https://github.com/hihats/hihats.pro
     branch: master
