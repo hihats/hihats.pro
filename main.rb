@@ -1,3 +1,5 @@
+#! /usr/bin/env ruby
+
 require 'sinatra'
 require 'aws-sdk-s3'
 require 'yaml'
@@ -5,7 +7,8 @@ require 'json'
 require 'time'
 require 'pp'
 
-set :port, ENV['PORT']
+set :port, ENV['PORT'] || 4567
+set :bind, '0.0.0.0'
 
 before do
   @title = '@hihats portfolio'
