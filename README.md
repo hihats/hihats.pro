@@ -12,10 +12,18 @@ $ docker build -t hihats.pro .
 $ docker run --rm -p 8080:10000 -e PORT=10000 --name hihats.pro hihats.pro
 ```
 
-### deploy to Render
-This project uses [Render Blueprint](https://render.com/docs/blueprint-spec) (`render.yaml`) with Docker runtime and GitHub integration.
+### deploy to Render (via ghcr.io)
 
-1. Connect the GitHub repository on [Render Dashboard](https://dashboard.render.com/)
-2. Create a new **Web Service** from the Blueprint (`render.yaml`)
-3. Set environment variables (`AWS_REGION`, `AWS_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY`, `S3_BUCKET_NAME`) in the Render Dashboard
-4. Pushes to `master` trigger automatic deploys
+1. ghcr.io にログイン（初回のみ）
+   ```
+   echo $GHCR_PAT | docker login ghcr.io -u hihats --password-stdin
+   ```
+2. ビルド & プッシュ
+   ```
+   docker build -t ghcr.io/hihats/hihats.pro:latest .
+   docker push ghcr.io/hihats/hihats.pro:latest
+   ```
+3. Render にデプロイ
+   ```
+   curl -X POST $RENDER_DEPLOY_HOOK_URL
+   ```
