@@ -9,6 +9,7 @@ require 'pp'
 
 set :port, ENV['PORT'] || 4567
 set :bind, '0.0.0.0'
+set :host_authorization, permitted_hosts: [/.*/]
 
 before do
   @title = '@hihats portfolio'
