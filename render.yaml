@@ -1,5 +1,6 @@
 services:
   - type: web
+    runtime: image
     name: hihats-pro
     plan: free
     image:
