@@ -19,6 +19,7 @@ get "/" do
   data = YAML.load_file("#{settings.root}/data.yml")
   @social_accounts = data["social_accounts"]
   @works = data["works"]
+  @articles = data["articles"]
   @projects = data["projects"]
   erb :index
 end
