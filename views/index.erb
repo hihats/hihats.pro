@@ -23,6 +23,17 @@
     </tr>
 <% end %>
 </table>
+<h4>Articles</h4>
+<table>
+<% @articles.each do |item| %>
+    <tr data-url="<%= item['url'] %>">
+        <td>
+          <a href="<%= item['url'] %>"><%= item['name'] %></a>
+        </td>
+        <td><%= item['description'] %></td>
+    </tr>
+<% end %>
+</table>
 <h4>Projects</h4>
 <table>
 <% @projects.each do |item| %>
