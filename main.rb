@@ -20,6 +20,7 @@ get "/" do
   @social_accounts = data["social_accounts"]
   @works = data["works"]
   @articles = data["articles"]
+  @slides = data["slides"]
   @projects = data["projects"]
   erb :index
 end
