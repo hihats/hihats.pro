@@ -1,6 +1,6 @@
 IMAGE := ghcr.io/hihats/hihats.pro:latest
 
-.PHONY: build push deploy run login
+.PHONY: build push deploy run local login
 
 ## build → push → Render deploy を一括実行
 deploy: build push
@@ -13,7 +13,12 @@ build:
 push:
 	docker push $(IMAGE)
 
-## ローカル確認用
+## ローカル確認用（ネイティブアーキテクチャでビルド＆起動）
+local:
+	docker build -t hihats.pro .
+	docker run --rm -p 8080:10000 -e PORT=10000 --name hihats.pro hihats.pro
+
+## デプロイ用イメージでローカル実行
 run:
 	docker run --rm -p 8080:10000 -e PORT=10000 --name hihats.pro $(IMAGE)
 
