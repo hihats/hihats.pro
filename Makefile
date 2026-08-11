@@ -22,6 +22,6 @@ local:
 run:
 	docker run --rm -p 8080:10000 -e PORT=10000 --name hihats.pro $(IMAGE)
 
-## ghcr.io ログイン（初回のみ）
+## ghcr.io ログイン（gh CLI のトークンを都度使用。GHCR_PAT は不要）
 login:
-	echo "$$GHCR_PAT" | docker login ghcr.io -u hihats --password-stdin
+	gh auth token | docker login ghcr.io -u hihats --password-stdin
