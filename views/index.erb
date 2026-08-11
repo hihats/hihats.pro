@@ -35,16 +35,20 @@
 <% end %>
 </table>
 <h4>Slides</h4>
-<table>
-<% @slides.each do |item| %>
-    <tr data-url="<%= item['url'] %>">
-        <td>
-          <a href="<%= item['url'] %>"><%= item['name'] %></a>
-        </td>
-        <td><%= item['description'] %></td>
-    </tr>
-<% end %>
-</table>
+<div class="slide-card">
+  <span class="slide-card-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2.5" y="4.5" width="19" height="13" rx="1.4"></rect>
+      <path d="M8 21h8"></path>
+      <path d="M12 17.5V21"></path>
+      <path d="M6.5 8.5h4M6.5 11.5h7"></path>
+    </svg>
+  </span>
+  <div class="slide-card-body">
+    <p class="slide-card-title">Slides</p>
+    <a class="slide-card-link" href="https://slides.hihats.pro/">View Slides →</a>
+  </div>
+</div>
 <h4>Projects</h4>
 <table>
 <% @projects.each do |item| %>
