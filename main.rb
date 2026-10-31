@@ -28,6 +28,21 @@ get "/aboutme" do
   erb :'aboutme/index'
 end
 
+get "/its_apply" do
+  @title = 'ITS保養施設 抽選申込 自動化CLI'
+  erb :'its_apply/index'
+end
+
+get "/its_apply/privacy" do
+  @title = 'プライバシーポリシー | ITS保養施設 抽選申込 自動化CLI'
+  erb :'its_apply/privacy'
+end
+
+get "/its_apply/terms" do
+  @title = '利用規約 | ITS保養施設 抽選申込 自動化CLI'
+  erb :'its_apply/terms'
+end
+
 get '/advent_calendar_ranking' do
   @title = 'Advent calendar 2017 stockers ranking'
   Aws.config.update(
