@@ -2,6 +2,7 @@ FROM ruby:3.3-alpine
 
 ENV LANG=ja_JP.UTF-8
 ENV TZ=Asia/Tokyo
+ENV APP_ENV=production
 
 RUN apk update && apk upgrade && \
     apk --no-cache add tzdata build-base && \

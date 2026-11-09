@@ -22,7 +22,12 @@
     <tr data-url="<%= calendar['url'] %>">
         <td><%= rank %></td>
         <td>
-          <a href="<%= "https://qiita.com" + calendar['url'] %>"><%= calendar['name'] %></a>
+          <%# start_with?('/') check: a value like "@evil.example" would turn the link into https://qiita.com@evil.example %>
+          <% if calendar['url'].to_s.start_with?('/') %>
+            <a href="<%= "https://qiita.com" + calendar['url'] %>"><%= calendar['name'] %></a>
+          <% else %>
+            <%= calendar['name'] %>
+          <% end %>
         </td>
         <td><%= calendar['category'] %></td>
         <td><%= calendar['stock_count'] %></td>
