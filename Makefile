@@ -5,12 +5,16 @@ IMAGE := $(IMAGE_REPO):latest
 GIT_DIRTY := $(if $(shell git status --porcelain -- . ':!docs'),-dirty)
 IMAGE_SHA := $(IMAGE_REPO):$(shell git rev-parse --short HEAD)$(GIT_DIRTY)
 
-.PHONY: build push deploy run local login
+.PHONY: build push deploy check-hook run local login
 
 ## build → push → Render deploy を一括実行
-deploy: build push
+deploy: check-hook build push
 	curl -sf -X POST "$$RENDER_DEPLOY_HOOK_URL"
 	@echo "\nDeploy triggered."
+
+## フック URL が空のまま push まで進むと、:latest だけ更新されて本番は未デプロイになるため先に止める
+check-hook:
+	@test -n "$$RENDER_DEPLOY_HOOK_URL" || { echo "RENDER_DEPLOY_HOOK_URL is empty (.envrc 変更後なら direnv allow)" >&2; exit 1; }
 
 build:
 	docker build --platform linux/amd64 -t $(IMAGE) -t $(IMAGE_SHA) .
