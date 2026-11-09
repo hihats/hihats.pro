@@ -9,7 +9,7 @@ require 'pp'
 
 set :port, ENV['PORT'] || 4567
 set :bind, '0.0.0.0'
-set :host_authorization, allow_if: ->(_env) { true }
+# permitted_hosts is left unset: Render's health check Host header is not documented, so pinning hihats.pro could fail deploys
 
 before do
   @title = '@hihats portfolio'

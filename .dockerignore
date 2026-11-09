@@ -1,0 +1,16 @@
+# secrets / local-only
+.envrc
+.claude
+.bundle
+vendor
+
+# not needed at runtime
+.git
+.github
+.gitignore
+docs
+Dockerfile
+.dockerignore
+Makefile
+README.md
+render.yaml
