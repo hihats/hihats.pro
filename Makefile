@@ -1,4 +1,5 @@
 IMAGE := ghcr.io/hihats/hihats.pro:latest
+IMAGE_SHA := ghcr.io/hihats/hihats.pro:$(shell git rev-parse --short HEAD)
 
 .PHONY: build push deploy run local login
 
@@ -8,10 +9,11 @@ deploy: build push
 	@echo "\nDeploy triggered."
 
 build:
-	docker build --platform linux/amd64 -t $(IMAGE) .
+	docker build --platform linux/amd64 -t $(IMAGE) -t $(IMAGE_SHA) .
 
 push:
 	docker push $(IMAGE)
+	docker push $(IMAGE_SHA)
 
 ## ローカル確認用（ネイティブアーキテクチャでビルド＆起動）
 local:
