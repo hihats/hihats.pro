@@ -1,7 +1,9 @@
 IMAGE_REPO := ghcr.io/hihats/hihats.pro
 IMAGE := $(IMAGE_REPO):latest
-# -dirty suffix: an image built from uncommitted changes must not claim to be HEAD
-IMAGE_SHA := $(IMAGE_REPO):$(shell git describe --always --dirty)
+# rev-parse, not describe: tag names can contain shell metacharacters and would be expanded unquoted below
+# untracked files count as dirty because COPY . ships them; docs/ is skipped since .dockerignore drops it
+GIT_DIRTY := $(if $(shell git status --porcelain -- . ':!docs'),-dirty)
+IMAGE_SHA := $(IMAGE_REPO):$(shell git rev-parse --short HEAD)$(GIT_DIRTY)
 
 .PHONY: build push deploy run local login
 
