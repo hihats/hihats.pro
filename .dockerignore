@@ -1,5 +1,5 @@
 # secrets / local-only
-.envrc
+**/.env*
 .claude
 .bundle
 vendor

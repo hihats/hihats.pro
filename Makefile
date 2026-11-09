@@ -1,5 +1,7 @@
-IMAGE := ghcr.io/hihats/hihats.pro:latest
-IMAGE_SHA := ghcr.io/hihats/hihats.pro:$(shell git rev-parse --short HEAD)
+IMAGE_REPO := ghcr.io/hihats/hihats.pro
+IMAGE := $(IMAGE_REPO):latest
+# -dirty suffix: an image built from uncommitted changes must not claim to be HEAD
+IMAGE_SHA := $(IMAGE_REPO):$(shell git describe --always --dirty)
 
 .PHONY: build push deploy run local login
 
@@ -12,8 +14,8 @@ build:
 	docker build --platform linux/amd64 -t $(IMAGE) -t $(IMAGE_SHA) .
 
 push:
-	docker push $(IMAGE)
 	docker push $(IMAGE_SHA)
+	docker push $(IMAGE)
 
 ## ローカル確認用（ネイティブアーキテクチャでビルド＆起動）
 local:
